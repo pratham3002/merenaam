@@ -15,27 +15,20 @@
         packages = ["numpy", "matplotlib"]
       </py-config>
       <py-script>
-	      import matplotlib.pyplot as plt
+	     import random
 
-# defining labels
-activities = ['eat', 'sleep', 'work', 'play']
+# generate a string of 99 zeros
+zeros = '0' * 99
 
-# portion covered by each label
-slices = [3, 7, 8, 6]
+# insert one 'O' at a random position
+random_position = random.randint(0, 99)
+zeros_with_one_o = zeros[:random_position] + 'O' + zeros[random_position:]
 
-# color for each label
-colors = ['r', 'y', 'g', 'b']
+# convert the string to a list of characters
+array_with_one_o = list(zeros_with_one_o)
 
-# plotting the pie chart
-plt.pie(slices, labels = activities, colors=colors,
-		startangle=90, shadow = True, explode = (0, 0, 0.1, 0),
-		radius = 1.2, autopct = '%1.1f%%')
-
-# plotting legend
-plt.legend()
-
-# showing the plot
-plt.show()
+# display the array for testing
+print(array_with_one_o)
       </py-script>
   </body>
 </html>
