@@ -1,34 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Python File</title>
-    <!-- linking to PyScript assets -->
-    <link rel="stylesheet" href="https://pyscript.net/releases/2022.12.1/pyscript.css" />
-    <script defer src="https://pyscript.net/releases/2022.12.1/pyscript.js"></script>
-  </head>
-  <body>
-    <div id="graph"></div>
-    <!-- Add third-party dependencies here -->
-      <py-config>
-        packages = ["numpy", "matplotlib"]
-      </py-config>
-      <py-script>
-	     import random
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PyScript REPL</title>
+  <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+  <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+  <py-env>
+    - matplotlib
+    - numpy
+  </py-env>
+</head>
+<body>
+  <py-repl>
+import matplotlib.pyplot as plt
+import numpy as np
+  </py-repl>
+  <py-repl>
+def wave(frequency, amplitude=1, phase=0):
+    def _wave(time):
+        return amplitude * np.sin(2 * np.pi * frequency * time + phase)
 
-# generate a string of 99 zeros
-zeros = '0' * 99
-
-# insert one 'O' at a random position
-random_position = random.randint(0, 99)
-zeros_with_one_o = zeros[:random_position] + 'O' + zeros[random_position:]
-
-# convert the string to a list of characters
-array_with_one_o = list(zeros_with_one_o)
-
-# display the array for testing
-print(array_with_one_o)
-      </py-script>
-  </body>
+    return _wave
+  </py-repl>
+  <py-repl></py-repl>
+</body>
 </html>
